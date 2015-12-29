@@ -47,9 +47,12 @@ Duolet.prototype.setup = function(opts) {
     sampleRate: this.sampleRate, bufferLength: this.bufferLength
   });
 
-  this.dsp.setup(opts);
-
-  this._dspBufLength = this.dsp.bufferLength;
+  if (typeof this.dsp.setup === "function") {
+    this.dsp.setup(opts);
+    this._dspBufLength = this.dsp.bufferLength || opts.dspBufferLength;
+  } else {
+    this._dspBufLength = opts.dspBufferLength;
+  }
   this._dspBufL = new Float32Array(this._dspBufLength);
   this._dspBufR = new Float32Array(this._dspBufLength);
 
@@ -62,7 +65,9 @@ Duolet.prototype.start = function() {
   if (this.state === "suspended") {
     this.state = "running";
     this.driver.start();
-    this.dsp.start();
+    if (typeof this.dsp.start === "function") {
+      this.dsp.start();
+    }
   }
   return this;
 };
@@ -71,7 +76,9 @@ Duolet.prototype.stop = function() {
   if (this.state === "running") {
     this.state = "suspended";
     this.driver.stop();
-    this.dsp.stop();
+    if (typeof this.dsp.stop === "function") {
+      this.dsp.stop();
+    }
   }
   return this;
 };

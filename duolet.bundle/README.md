@@ -33,6 +33,13 @@ $ npm install duolet.bundle
 
 - [duolet.dsp](https://github.com/mohayonao/duolet/tree/master/duolet.dsp)
 
+```
+interface duoletDSP {
+  setup(opts: object) => void;
+  process(bufL: Float32Array, bufR: Float32Array) => void;
+}
+```
+
 ## Audio Drivers
 
 - https://github.com/mohayonao/pico.driver
