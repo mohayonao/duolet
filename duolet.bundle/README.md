@@ -35,7 +35,9 @@ $ npm install duolet.bundle
 
 ```
 interface duoletDSP {
-  setup(opts: object) => void;
+  optional setup(opts: object) => void;
+  optional start() => void;
+  optional stop() => void;
   process(bufL: Float32Array, bufR: Float32Array) => void;
 }
 ```
