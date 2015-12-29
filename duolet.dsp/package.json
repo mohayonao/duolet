@@ -1,13 +1,13 @@
 {
   "name": "duolet.dsp",
   "description": "base class for duolet DSP",
-  "version": "0.7.0",
+  "version": "1.0.0",
   "author": "Nao Yonamine <mohayonao@gmail.com>",
   "bugs": {
     "url": "https://github.com/mohayonao/duolet/issues"
   },
   "dependencies": {
-    "duolet._config": "^0.4.0"
+    "duolet._config": "^1.0.0"
   },
   "files": [
     "README.md",
