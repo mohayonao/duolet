@@ -91,7 +91,7 @@ Duolet.prototype.recvFromWorker = function(data) {
     if (this._bufSlotCount <= this._rdBufIndex) {
       this._rdBufIndex = 0;
     }
-  } else if (data.type[0] === ":") {
+  } else if (data && (data.type === ":start" || data.type === ":stop")) {
     this[data.type.substr(1)](data);
   }
 }

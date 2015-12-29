@@ -57,17 +57,21 @@ Duolet.prototype.setup = function(opts) {
     sampleRate: this.sampleRate, bufferLength: this.bufferLength
   });
 
-  this.dsp.setup(opts);
+  if (typeof this.dsp.setup === "function") {
+    this.dsp.setup(opts);
+    this._dspBufLength = this.dsp.bufferLength || opts.dspBufferLength;
+  } else {
+    this._dspBufLength = opts.dspBufferLength;
+  }
+  this._dspBufL = new Float32Array(this._dspBufLength);
+  this._dspBufR = new Float32Array(this._dspBufLength);
+
   this._bufSlotCount = opts.bufferSlotCount;
   this._bufSlots = new Array(this._bufSlotCount);
 
   for (var i = 0; i < this._bufSlots.length; i++) {
     this._bufSlots[i] = new Float32Array(this.bufferLength * 2);
   }
-
-  this._dspBufLength = this.dsp.bufferLength;
-  this._dspBufL = new Float32Array(this._dspBufLength);
-  this._dspBufR = new Float32Array(this._dspBufLength);
 
   return this;
 };
@@ -79,7 +83,9 @@ Duolet.prototype.start = function() {
   if (this.state === "suspended") {
     this.state = "running";
     this._self.postMessage({ type: ":start" });
-    this.dsp.start();
+    if (typeof this.dsp.start === "function") {
+      this.dsp.start();
+    }
     this._timerId = this.timerAPI.setInterval(function() {
       _this.process();
     }, interval);
@@ -92,15 +98,14 @@ Duolet.prototype.stop = function() {
   if (this.state === "running") {
     this.state = "suspended";
     this._self.postMessage({ type: ":stop" });
-    this.dsp.stop();
+    if (typeof this.dsp.stop === "function") {
+      this.dsp.stop();
+    }
     this.timerAPI.clearInterval(this._timerId);
     this._timerId = 0;
   }
 
   return this;
-};
-
-Duolet.prototype.recvFromClient = function() {
 };
 
 Duolet.prototype.recvFromWorkerClient = function(data) {
@@ -110,9 +115,9 @@ Duolet.prototype.recvFromWorkerClient = function(data) {
     if (this._bufSlotCount <= this._rdBufIndex) {
       this._rdBufIndex = 0;
     }
-  } else if (data.type[0] === ":") {
+  } else if (data && data.type === ":setup") {
     this[data.type.substr(1)](data);
-  } else {
+  } else if (typeof this.recvFromClient === "function") {
     this.recvFromClient(data);
   }
 };

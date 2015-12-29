@@ -47,6 +47,15 @@ $ npm install duolet.worker
 
 - [duolet.dsp](https://github.com/mohayonao/duolet/tree/master/duolet.dsp)
 
+```
+interface duoletDSP {
+  optional setup(opts: object) => void;
+  optional start() => void;
+  optional stop() => void;
+  process(bufL: Float32Array, bufR: Float32Array) => void;
+}
+```
+
 ## Audio Drivers
 
 - https://github.com/mohayonao/pico.driver
