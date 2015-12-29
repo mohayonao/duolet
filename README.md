@@ -60,7 +60,7 @@ duolet.sendToWorker({ type: "start" });
 in the worker thread
 
 ```js
-const duolet = require("duolet.worker/worker")();
+const duolet = require("duolet.worker/worker")(self);
 const DSP = require("./dsp");
 
 duolet.compose({ dsp: new DSP() });
