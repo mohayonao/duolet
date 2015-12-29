@@ -1,0 +1,24 @@
+{
+  "name": "@duolet-example/sine-tone-worker",
+  "version": "1.0.0",
+  "dependencies": {
+    "@duolet-example/sine-tone": "file:..",
+    "pico.driver.webaudio": "^1.0.1",
+    "duolet.worker": "^0.6.0"
+  },
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "npm-run-all": "^1.4.0",
+    "watchify": "^3.6.1"
+  },
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "build": "npm-run-all --parallel build:*",
+    "build:client": "browserify src/client.js --outfile bundle.js",
+    "build:worker": "browserify src/worker.js --outfile bundle.worker.js",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:client": "watchify src/client.js --outfile bundle.js --verbose",
+    "watch:worker": "watchify src/worker.js --outfile bundle.worker.js --verbose"
+  }
+}

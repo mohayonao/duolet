@@ -1,0 +1,18 @@
+{
+  "name": "@duolet-example/sine-tone-bundle",
+  "version": "1.0.0",
+  "dependencies": {
+    "@duolet-example/sine-tone": "file:..",
+    "pico.driver.webaudio": "^1.0.1",
+    "duolet.bundle": "^0.7.0"
+  },
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "watchify": "^3.6.1"
+  },
+  "private": true,
+  "scripts": {
+    "build": "browserify src --outfile bundle.js",
+    "watch": "watchify src --outfile bundle.js --verbose"
+  }
+}
