@@ -1,0 +1,36 @@
+{
+  "name": "duolet.bundle",
+  "description": "duolet.bundle",
+  "version": "0.7.0",
+  "author": "Nao Yonamine <mohayonao@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/mohayonao/duolet/issues"
+  },
+  "dependencies": {
+    "object-assign": "^4.0.1",
+    "duolet._config": "^0.4.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "sinon": "^1.17.2"
+  },
+  "files": [
+    "README.md",
+    "index.js",
+    "package.json"
+  ],
+  "homepage": "https://github.com/mohayonao/duolet/tree/master/duolet.bundle",
+  "keywords": [
+    "duolet"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohayonao/duolet.git"
+  },
+  "scripts": {
+    "test": "mocha",
+    "travis": "npm run test"
+  }
+}
