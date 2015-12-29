@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "@duolet-example/sine-tone": "file:..",
-    "duolet.bundle": "^0.8.0",
+    "duolet.bundle": "^1.0.0",
     "pico.driver.webaudio": "^1.0.1"
   },
   "devDependencies": {
