@@ -12,6 +12,21 @@ All components in the main thread. This architecture works on the browser and th
 $ npm install duolet.bundle
 ```
 
+## Example
+
+```js
+const duolet = require("duolet.bundle");
+const Driver = require("pico.driver.webaudio");
+const DSP = require("./dsp");
+
+let audioContext = new AudioContext();
+
+duolet.compose({ dsp: new DSP(), driver: new Driver() });
+duolet.setup({ context: audioContext, bufferLength: 1024 });
+
+duolet.start();
+```
+
 ## API
 ### Duolet
 - `constructor()`

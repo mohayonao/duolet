@@ -17,6 +17,19 @@ All components in the main thread. This architecture works on the browser and th
 $ npm install duolet.bundle
 ```
 
+```js
+const duolet = require("duolet.bundle");
+const Driver = require("pico.driver.webaudio");
+const DSP = require("./dsp");
+
+let audioContext = new AudioContext();
+
+duolet.compose({ dsp: new DSP(), driver: new Driver() });
+duolet.setup({ context: audioContext, bufferLength: 1024 });
+
+duolet.start();
+```
+
 ### duolet.worker
 [![NPM Version](http://img.shields.io/npm/v/duolet.worker.svg?style=flat-square)](https://www.npmjs.org/package/duolet.worker)
 
@@ -26,6 +39,33 @@ $ npm install duolet.bundle
 
 ```
 $ npm install duolet.worker
+```
+
+```js
+const duolet = require("duolet.worker/client");
+const Driver = require("pico.driver.webaudio");
+
+let audioContext = new AudioContext();
+
+duolet.compose({ workerPath: "/path/to/worker", driver: new Driver() });
+duolet.setup({ context: audioContext, bufferLength: 1024 });
+
+duolet.sendToWorker({ type: "start" });
+```
+
+worker.js
+
+```js
+const duolet = require("duolet.worker/worker");
+const DSP = require("./dsp");
+
+duolet.compose({ dsp: new DSP() });
+
+duolet.recvFromClient = (e) => {
+  if (e.type === "start") {
+    duolet.start();
+  }
+};
 ```
 
 ## Interfaces

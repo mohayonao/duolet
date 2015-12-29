@@ -12,6 +12,35 @@
 $ npm install duolet.worker
 ```
 
+## Example
+
+```js
+const duolet = require("duolet.worker/client");
+const Driver = require("pico.driver.webaudio");
+
+let audioContext = new AudioContext();
+
+duolet.compose({ workerPath: "/path/to/worker", driver: new Driver() });
+duolet.setup({ context: audioContext, bufferLength: 1024 });
+
+duolet.sendToWorker({ type: "start" });
+```
+
+worker.js
+
+```js
+const duolet = require("duolet.worker/worker");
+const DSP = require("./dsp");
+
+duolet.compose({ dsp: new DSP() });
+
+duolet.recvFromClient = (e) => {
+  if (e.type === "start") {
+    duolet.start();
+  }
+};
+```
+
 ## API
 ### client/Duolet
 - `constructor()`
