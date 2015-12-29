@@ -14,8 +14,10 @@ $ npm install duolet.bundle
 
 ## Example
 
+in the main thread
+
 ```js
-const duolet = require("duolet.bundle");
+const duolet = require("duolet.bundle")();
 const Driver = require("pico.driver.webaudio");
 const DSP = require("./dsp");
 
