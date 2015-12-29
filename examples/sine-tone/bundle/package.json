@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "dependencies": {
     "@duolet-example/sine-tone": "file:..",
-    "pico.driver.webaudio": "^1.0.1",
-    "duolet.bundle": "^0.7.0"
+    "duolet.bundle": "^0.8.0",
+    "pico.driver.webaudio": "^1.0.1"
   },
   "devDependencies": {
     "browserify": "^12.0.1",

@@ -1,9 +1,6 @@
 {
   "name": "@duolet-example/sine-tone",
   "version": "1.0.0",
-  "dependencies": {
-    "duolet.dsp": "^0.7.0"
-  },
   "files": [
     "dsp.js",
     "index.js"
