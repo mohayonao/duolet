@@ -1,0 +1,29 @@
+{
+  "name": "duolet.audioworker",
+  "description": "duolet.audioworker",
+  "version": "0.1.0",
+  "author": "Nao Yonamine <mohayonao@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/mohayonao/duolet/issues"
+  },
+  "dependencies": {
+    "duolet._config": "^1.0.0",
+    "object-assign": "^4.0.1"
+  },
+  "files": [
+    "README.md",
+    "client.js",
+    "worker.js",
+    "package.json"
+  ],
+  "homepage": "https://github.com/mohayonao/duolet/tree/master/duolet.audioworker",
+  "keywords": [
+    "duolet"
+  ],
+  "license": "MIT",
+  "main": "client.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohayonao/duolet.git"
+  }
+}
