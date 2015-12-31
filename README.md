@@ -51,7 +51,7 @@ const Driver = require("pico.driver.webaudio");
 
 let audioContext = new AudioContext();
 
-duolet.compose({ workerPath: "/path/to/worker", driver: new Driver() });
+duolet.compose({ driver: new Driver(), workerPath: "/path/to/worker" });
 duolet.setup({ context: audioContext, bufferLength: 1024 });
 
 duolet.sendToWorker({ type: "start" });
@@ -87,7 +87,8 @@ interface DuoletDSP {
 
 ## Audio Drivers
 
-- https://github.com/mohayonao/pico.driver
+- [pico.driver.webaudio](https://github.com/mohayonao/pico.driver/tree/master/pico.driver.webaudio)
+- [pico.driver.nodeaudio](https://github.com/mohayonao/pico.driver/tree/master/pico.driver.nodeaudio)
 
 ## License
 
