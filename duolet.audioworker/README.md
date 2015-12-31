@@ -2,11 +2,8 @@
 [![NPM Version](http://img.shields.io/npm/v/duolet.audioworker.svg?style=flat-square)](https://www.npmjs.org/package/duolet.audioworker)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](http://mohayonao.mit-license.org/)
 
-
-*
 This is an experimental module.
 AudioWorker haven't been implemented in any browsers yet.
-*
 
 `DRIVER` and `DSP` in the worker thread. This architecture works on the browser.
 
@@ -28,7 +25,7 @@ const Driver = require("pico.driver.audioworker/client");
 
 let audioContext = new AudioContext();
 
-duolet.compose({ workerPath: "/path/to/worker", driver: new Driver() });
+duolet.compose({ driver: new Driver(), workerPath: "/path/to/worker" });
 duolet.setup({ context: audioContext, bufferLength: 1024 });
 
 duolet.sendToWorker({ type: "start" });
@@ -70,7 +67,7 @@ duolet.recvFromClient = (e) => {
 - `constructor(self: AudioWorkerGlobalScope)`
 
 #### Instance attributes
-- `dsp: duoletDSP`
+- `dsp: DuoletDSP`
 - `sampleRate: number` _(implicit readonly)_
 - `bufferLength: number` _(implicit readonly)_
 
@@ -86,7 +83,7 @@ duolet.recvFromClient = (e) => {
 - [duolet.dsp](https://github.com/mohayonao/duolet/tree/master/duolet.dsp)
 
 ```
-interface duoletDSP {
+interface DuoletDSP {
   optional setup(opts: object) => void;
   optional start() => void;
   optional stop() => void;
@@ -96,7 +93,7 @@ interface duoletDSP {
 
 ## Audio Drivers
 
-- https://github.com/mohayonao/pico.driver
+- [pico.driver.audioworker](https://github.com/mohayonao/pico.driver/tree/master/pico.driver.audioworker)
 
 ## License
 

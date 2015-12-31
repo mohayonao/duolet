@@ -77,7 +77,7 @@ duolet.recvFromClient = (e) => {
 - [duolet.dsp](https://github.com/mohayonao/duolet/tree/master/duolet.dsp)
 
 ```
-interface duoletDSP {
+interface DuoletDSP {
   optional setup(opts: object) => void;
   optional start() => void;
   optional stop() => void;

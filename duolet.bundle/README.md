@@ -34,7 +34,7 @@ duolet.start();
 - `constructor()`
 
 #### Instance attributes
-- `dsp: duoletDSP`
+- `dsp: DuoletDSP`
 - `driver: pico.driver`
 - `sampleRate: number` _(implicit readonly)_
 - `bufferLength: number` _(implicit readonly)_
@@ -51,7 +51,7 @@ duolet.start();
 - [duolet.dsp](https://github.com/mohayonao/duolet/tree/master/duolet.dsp)
 
 ```
-interface duoletDSP {
+interface DuoletDSP {
   optional setup(opts: object) => void;
   optional start() => void;
   optional stop() => void;
@@ -61,7 +61,8 @@ interface duoletDSP {
 
 ## Audio Drivers
 
-- https://github.com/mohayonao/pico.driver
+- [pico.driver.webaudio](https://github.com/mohayonao/pico.driver/tree/master/pico.driver.webaudio)
+- [pico.driver.nodeaudio](https://github.com/mohayonao/pico.driver/tree/master/pico.driver.nodeaudio)
 
 ## License
 

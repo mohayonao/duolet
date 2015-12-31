@@ -22,7 +22,7 @@ const Driver = require("pico.driver.webaudio");
 
 let audioContext = new AudioContext();
 
-duolet.compose({ workerPath: "/path/to/worker", driver: new Driver() });
+duolet.compose({ driver: new Driver(), workerPath: "/path/to/worker" });
 duolet.setup({ context: audioContext, bufferLength: 1024 });
 
 duolet.sendToWorker({ type: "start" });
@@ -63,7 +63,7 @@ duolet.recvFromClient = (e) => {
 - `constructor(self: DedicatedWorkerGlobalScope)`
 
 #### Instance attributes
-- `dsp: duoletDSP`
+- `dsp: DuoletDSP`
 - `sampleRate: number` _(implicit readonly)_
 - `bufferLength: number` _(implicit readonly)_
 
@@ -79,7 +79,7 @@ duolet.recvFromClient = (e) => {
 - [duolet.dsp](https://github.com/mohayonao/duolet/tree/master/duolet.dsp)
 
 ```
-interface duoletDSP {
+interface DuoletDSP {
   optional setup(opts: object) => void;
   optional start() => void;
   optional stop() => void;
@@ -89,7 +89,7 @@ interface duoletDSP {
 
 ## Audio Drivers
 
-- https://github.com/mohayonao/pico.driver
+- [pico.driver.webaudio](https://github.com/mohayonao/pico.driver/tree/master/pico.driver.webaudio)
 
 ## License
 
